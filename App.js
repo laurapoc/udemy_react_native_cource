@@ -10,7 +10,6 @@ export default function App() {
   };
 
   const addGoaldHandler = () => {
-    console.log(enteredGoalText);
     setCourceGoals((prevState) => [...prevState, enteredGoalText]);
     setEnteredGoalText("");
   };
@@ -32,7 +31,9 @@ export default function App() {
       </View>
       <View style={styles.goalsCOntainer}>
         {courceGoals.map((item) => (
-          <Text key={item}>{item}</Text>
+          <View key={item} style={styles.goalItem}>
+            <Text style={styles.goalText}>{item}</Text>
+          </View>
         ))}
         {courceGoals.length > 0 && (
           <Button title="Delete all goals" onPress={deleteGoalHandler} />
@@ -62,5 +63,14 @@ const styles = StyleSheet.create({
   },
   goalsCOntainer: {
     flex: 5,
+  },
+  goalItem: {
+    margin: 8,
+    padding: 8,
+    borderRadius: 6,
+    backgroundColor: "#5e0acc",
+  },
+  goalText: {
+    color: "white",
   },
 });
